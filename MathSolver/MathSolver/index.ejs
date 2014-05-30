@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    	<title><%= title %></title>
+    	<link rel='stylesheet' href='/stylesheets/style.css' />
+   	</head>
+	<body>	
+		<header>
+	    		<h1 align="center">Prime Number</h1>
+		</header>
+		<div class="inputArea">
+	    	<h2 align="center">Input Area</h2>
+			<form class="formInput" action="/allPrimeNumber" method="post">   
+	        	<span>     	
+	        		<label>Please Enter the Number for All Prime Numbers</label>
+	           		<input type="text" name="inputNumberAll" id="inputNumber1" value="<%= userInputAll %>">
+	           	</span>
+	           	<input type="submit" class="button allPrimeNumber" value="All" >
+	        </form>
+	        <form class="formInput" action="/isPrimeNumber" method="post">   
+	        	<span>     	
+	        		<label>Check whether the Number is Prime or not </label>
+	           		<input type="text" name="inputNumberIs" id="inputNumber2" value="<%= userInputIs %>">
+	           	</span>
+	           	<input type="submit" class="button allPrimeNumber" value="Check" >
+	        </form>		
+		</div>
+	    <aside>
+			<h2 align="center">Ouptut Area</h2>
+			<textarea rows="5" columns="5"><%= result %></textarea>
+		</aside>
+			
+	</body>		
+</html>

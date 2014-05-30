@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+
+<html>
+  	<head>
+    	<title>Ez Shopping Cart Admin Page</title>
+
+
+	    <link rel="stylesheet" href="/stylesheets/style.css" type="text/css" >
+	    <link rel="stylesheet" href="/stylesheets/header.css" type="text/css" >
+	    <link rel="stylesheet" href="/stylesheets/footer.css" type="text/css" >
+	    <link rel="stylesheet" href="/stylesheets/bootstrap.css" type="text/css" >
+	    <link rel="stylesheet" href="/stylesheets/dropdown.css" type="text/css" >
+	    <link rel="stylesheet" href="/stylesheets/error.css" type="text/css" >	    
+	    
+	    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>  	
+	        
+	    <script type="text/javascript">
+			jQuery(document).ready(function()
+			{					      	
+			
+			/* =========================== Insert Category ======================== */		        
+		        $("#insert_category").click(function () 
+		        {     			
+		        
+		        	var result=1;
+		        	var name = jQuery("#insert_category_name").val();
+		            if(name=="")
+		            {
+		               result=1;
+		               jQuery("#insert_category_name_error").text("You cannot leave this Blank");
+		               return false;
+		            }
+		            else
+		            {
+		               result=0;     
+		               jQuery("#insert_category_name_error").text("");
+		            }
+		        	
+		        	var data = {};
+		          	data.insert_category_name = $("#insert_category_name").val();
+		          	var ajax_url = "/Ajax_AddCategoryName";		
+		          	//alert(data.insert_category_name);
+		          	
+		          	$.ajax({
+		            	type: "POST",
+		            	url:ajax_url,
+		            	data: JSON.stringify(data),
+		            	contentType: 'application/json',
+		            	
+		            	success: function(output_string) 
+		            	{			           	
+		              		jQuery("#insert_category_name_error").text("Successfully Added");	
+		            	},
+		            	error: function (error) {
+                  			alert('Error');
+              			}
+		          	}); 
+		    	});
+		    	
+		    	/* =========================== Insert Product ======================== */
+		    	
+		    	var name_result = 1;
+				var price_result = 1;
+				var no_result = 1;
+				var desc_result = 1;
+
+		    	jQuery("#insert_product").click( function()
+        		{
+            
+            		/* ------------- Name ------------------ */
+		            var name = jQuery("#insert_product_name").val();
+		            if(name=="")
+		            {
+		               name_result=1;		               
+		            }
+		            else
+		            {
+		               name_result=0;     		               
+		            }
+		            
+		            /* ---------------- Prize ------------------ */
+		            var price = jQuery("#insert_product_price").val();
+		            if(price=="")
+		            {
+		               price_result=1;		               
+		            }
+		            else
+		            {
+		               price_result=0;		               
+		            }
+		            
+		            
+		            /* ---------------- No of products ------------------ */
+		            var no = jQuery("#insert_no_of_product").val();
+		            if(no=="")
+		            {
+		               no_result=1;		               
+		            }
+		            else
+		            {
+		               no_result=0;     		               
+		            }
+		            
+		             /* ---------------- Products Desc ------------------ */
+		            var desc = jQuery("#insert_product_desc").val();
+		            if(desc=="")
+		            {
+		               desc_result=1;		               
+		            }
+		            else
+		            {
+		             	desc_result=0;		                
+		            }
+		            
+		            
+		            if(name_result==1 || price_result==1 || no_result==1 || desc_result==1 )
+		            {
+		                
+		                jQuery("#insert_product_error").text("Please complete the form");
+		                return false;
+		            }
+		            else
+		            {		                
+		                jQuery("#insert_product_error").text("");		                
+		            }
+		            
+		            var data = {};
+		            data.category_list = $(".category_list_product").val();
+		          	data.insert_product_name = $("#insert_product_name").val();
+		          	data.insert_product_price = $("#insert_product_price").val();
+		          	data.insert_no_of_product = $("#insert_no_of_product").val();
+		          	data.insert_product_desc = $("#insert_product_desc").val();
+		          	
+		          	var ajax_url = "/Ajax_AddProduct";		
+		          	
+		          	//alert(data.category_list);
+		          	//alert(data.insert_product_name);
+		          	//alert(data.insert_product_price);
+		          	//alert(data.insert_no_of_product);
+		          	//alert(data.insert_product_desc);
+		          	
+		          	 $.ajax({
+		            	type: "POST",
+		            	url:ajax_url,
+		            	data: JSON.stringify(data),
+		            	contentType: 'application/json',
+		            	
+		            	success: function(output_string) 
+		            	{			           	
+		              		jQuery("#insert_product_error").text("Product is Successfully Added");	
+		            	},
+		            	error: function (error) {
+                  			alert('Error');
+              			}
+		          	}); 
+				});
+	        	
+	      	});
+		</script>
+
+	</head>
+
+  	<body>
+  	
+		<div class="wrapper">
+    		<header>
+	      		<div class="header-top">
+	        		<div class="container">
+          				<div class="welcome_name pull-left">
+            				<h3>Welcome <%= username %></h3>
+            			</div>
+          				<div class="pull-right">
+            				<nav class="navbar clear-right pull-right">
+              					<ul class="nav nav-pills">                <!-- Header NavBar -->
+				                  	<li>
+				                    	<a href="/" title="logout" class="">Logout</a>
+				                	</li>
+				                						                
+              					</ul>
+            				</nav>
+          				</div>
+        			</div>
+      			</div>
+
+      			<div class="header-bottom">
+        			<div class="container">
+          				<div class="logo">        <!-- Header Logo and Search -->
+            				<a href="" title="home" class="pull-left"><img src="/images/logo.jpg" alt="Logo" /></a>
+            				<a href="" title="home" class="pull-left"><h1 class="clear-left">Cart</h1></a>
+          				</div>          				
+        			</div>
+      			</div>
+     
+    		</header>
+    		
+    		<section class="adjust">
+       			<article class="container ">
+        			<div class="span10 clear-left pull-left">
+          				<div class="tabbable tabs-left pull-left">
+	            			<ul class="nav nav-tabs admin_sidebar">
+	              				<li id="1" class="active" ><a href="#lA" data-toggle="tab">Add Category</a></li>
+	              				<li id="2" ><a href="#lB" data-toggle="tab">Add Product</a></li>
+	                       	</ul>
+	                    </div>
+                	
+	                	
+	                	<div class="tab-content">	  
+	                	      		
+	        		              <!---Add category-->
+	        		              	        		
+			        		<div class="tab-pane" id="lA">
+		            			<div class="form-horizontal" >
+		                            <div class="control-group">
+		            					<label class="control-label">Name</label>
+		            					<div class="controls">
+		              						<input type="text" id="insert_category_name" name="insert_category_name" placeholder="Category Name">
+		            					</div>
+		            					<label id="insert_category_name_error"></label>
+		          					</div>
+		          					<input type="hidden" value="add_category" name="checking" />	
+		
+		          					<div class="control-group">
+		            					<div class="controls">
+		              						<input type="submit" id="insert_category" name="insert_category" value="Add">
+		            					</div>
+		          					</div>
+		          
+		          					<div class="controls">
+		              					<label id="insert_category_name_result"></label>
+		          					</div>                  	
+		            			</div>
+		          			</div>
+	                	</div>
+	                	
+	                			<!---add product-->
+      					<div class="tab-pane pull-left" id="lB">
+        					<div class="form-horizontal" >
+        					
+          						<div class="select_category">
+          							<div class="control-group">
+            							<label class="control-label">Select Category</label>
+            							<div class="controls">            							
+              								<select name="category_list_product" class="category_list_product">
+              									<% for(var i in category_info) 
+     											{     								
+												%>
+              									<option value="<%= category_info[i].category_name %>"><%= category_info[i].category_name %></option>
+              									<% } %>
+              								</select>
+            							</div>
+          							</div>                   
+            					</div>
+            					
+          						<div class="enable_product">
+          							<div class="control-group">
+            							<label class="control-label">Name</label>
+            							<div class="controls">
+              								<input type="text" id="insert_product_name" name="insert_product_name" placeholder="Product Name">
+            							</div>
+          							</div>
+          						</div>
+          							          						
+          						<div class="control-group">
+            						<label class="control-label">Price</label>
+            						<div class="controls">
+              							<input type="text" id="insert_product_price" name="insert_product_price" placeholder="Product Price">
+            						</div>
+          						</div>
+
+          						<div class="control-group">
+            						<label class="control-label">No of Products</label>
+            						<div class="controls">
+              							<input type="text" id="insert_no_of_product" name="insert_no_of_product" placeholder="Product Count">
+            						</div>
+          						</div>
+
+                            	<div class="control-group">
+            						<label class="control-label">Products Description</label>
+            						<div class="controls">
+              							<input type="text" id="insert_product_desc" name="insert_product_desc" placeholder="Products Description">
+            						</div>
+
+          						</div>
+          						
+              					<div class="control-group">
+            						<div class="controls">
+              							<input type="submit" id="insert_product" name="insert_product" value="Add">
+            							<label id="insert_product_error"></label>              							
+            						</div>
+          						</div>          						
+          					</div>          					
+        				</div>
+					</div>
+          		</article>
+          	</section> 
+
+			<div class="push"></div>
+			</div>
+	
+	<script>
+	    	jQuery(document).ready(function()
+			{
+				
+          		jQuery("li#2").click(function () 
+		        {
+		        	jQuery("#lA").css("display","none");
+		        	jQuery("#lB").css("display","block");
+		        	$("#2").addClass("active");
+            		$("#1").removeClass("active");
+		        });
+		        
+		        jQuery("li#1").click(function () 
+		        {		        
+		        	jQuery("#lB").css("display","none");
+		        	jQuery("#lA").css("display","block");
+		        	$("#1").addClass("active");
+            		$("#2").removeClass("active");
+		       	}); 
+		 	});
+		       
+          </script>
+	    	<div class="footer">
+	    		<footer>
+	      			<div class="container">
+	        			<p class="copyright">
+	          				Copyright 2012 for
+	          				<strong><a href="" title="home" >EZCart.com</a></strong>
+	        			</p>	
+	      			</div>
+	    		</footer>
+			</div>
+		</div>
+  	</body>
+</html>

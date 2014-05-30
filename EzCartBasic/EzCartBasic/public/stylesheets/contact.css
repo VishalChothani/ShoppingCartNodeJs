@@ -1,0 +1,16 @@
+textarea
+{
+	resize: vertical;
+}
+
+.label-error p
+{
+  color : red;
+  margin-left : 20%;
+}
+
+#new_password
+{
+  color: red;
+  font-weight: bold;
+}

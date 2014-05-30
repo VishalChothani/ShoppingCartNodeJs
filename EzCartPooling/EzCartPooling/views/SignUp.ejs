@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Ez Shopping Cart SignUp Page</title>
+  
+
+    <link rel="stylesheet" href="/stylesheets/style.css" type="text/css" >
+    <link rel="stylesheet" href="/stylesheets/header.css" type="text/css" >
+    <link rel="stylesheet" href="/stylesheets/footer.css" type="text/css" >
+    <link rel="stylesheet" href="/stylesheets/bootstrap.css" type="text/css" >
+    <link rel="stylesheet" href="/stylesheets/dropdown.css" type="text/css" >
+    <link rel="stylesheet" href="/stylesheets/error.css" type="text/css" >
+    
+    <script src="/js/jQuery_lib.js" language="javascript"></script>
+    <script src="/js/bootstrap.js" language="javascript"></script>
+    <script src="/js/dropKick/jquery.dropkick-1.0.0.js" language="javascript"></script>
+    <script src="/js/jquery.cycle2.min.js"></script>
+	<script src="/js/jquery.cycle2.tile.min.js"></script>
+    <script src="/js/signup_error.js"></script>
+
+  </head>
+  
+  <body>
+     <div class="wrapper">
+
+
+      <header>
+        <div class="header-top">
+          <div class="container">
+            <div class="pull-right">
+              <nav class="navbar clear-right pull-right">
+              <ul class="nav nav-pills">                <!-- Header NavBar -->
+                <li>
+                    <a href="/" title="Login" class="">Login</a>
+                </li>
+                <li>
+                    <a href="" title="Sign" class="active">Sign up</a>
+                </li>
+                </ul>
+              </nav>
+           </div>
+         </div>
+      </div>
+        
+      <div class="header-bottom">
+        <div class="container">
+          <div class="logo">        <!-- Header Logo and Search -->
+            <a href="" title="home" class="pull-left"><img src="/images/logo.jpg" alt="Logo" /></a>
+            <a href="" title="home" class="pull-left"><h1 class="clear-left">Cart</h1></a>
+          </div>                    
+        </div>
+      </div>
+      <div class="container ">
+          <nav id="dropdown_nav">
+            <h3>SignUp</h3>
+          </nav>
+        </div>
+    </header>
+
+    <section class="adjust">
+      
+      <form class="container form-horizontal" action="/UserProfile" method="post">
+        
+        
+         <div class="control-group signup">
+          <label class="control-label" >First name*</label>
+          <div class="controls">
+            <input type="text" id="firstname" placeholder="firstname" name="firstname" value="">
+          </div>
+          
+          <label id="firstname_error"></label>
+        </div>
+        
+         <div class="control-group signup">
+          <label class="control-label" >Last name*</label>
+          <div class="controls">
+            <input type="text" id="lastname" placeholder="lastname" name="lastname" value="">
+          </div>
+          
+          <label id="lastname_error"></label>
+        </div>
+        
+        <div class="control-group signup">
+          <label class="control-label" >Username*</label>
+          <div class="controls">
+            <input type="text" id="username" placeholder="username" name="username" value="">
+          </div>
+          
+          <label id="username_error"></label>
+        </div>
+        
+        
+        <div class="control-group signup">
+          <label class="control-label" for="inputPassword">Password*</label>
+          <div class="controls">
+            <input type="password" id="password" name="password" placeholder="Password"  value="">
+          </div>
+          <label id="password_error"></label>
+        </div>
+        
+        <div class="control-group signup">
+          <label class="control-label" name="address">Address*</label>
+          <div class="controls">
+            <input type="text" id="address" name="address" placeholder="Address"  value="" >
+          </div>
+          <label id="address_error"></label>
+        </div>
+        
+        <div class="control-group signup">
+          <label class="control-label" for="inputEmail">Email*</label>
+          <div class="controls">
+            <input type="text" id="email" name="email" placeholder="Email"  value="" >
+          </div>
+          <label id="email_error"></label>
+        </div>
+
+        <span class="username_present"><%=title%> </span>
+
+
+        <div class="control-group signup">
+          <div class="controls">
+            <button type="submit" class="btn" name="signup" id="signup">Sign up</button>
+            <label id="form_error"></label>
+          </div>
+        </div>              
+      
+      </form>
+          
+     </section>
+
+<div class="push"></div>
+
+		</div>
+
+      <div class="footer">
+
+
+      <footer>
+        <div class="container">
+         <p class="copyright">
+          Copyright 2012 for
+          <strong><a href="" title="home" >EZCart.com</a></strong>
+          
+         </p>
+          
+          </div>
+
+      </footer>
+   
+
+</div>
+  </body>
+</html>

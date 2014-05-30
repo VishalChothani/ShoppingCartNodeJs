@@ -1,0 +1,15 @@
+.enable_update_category , .enable_delete_category
+{
+display : none;
+}
+
+.enable_delete_sub , .enable_insert_sub, .enable_update_sub
+{
+display : none;
+}
+
+.enable_update_product , .enable_delete_product
+{
+display : none;
+}
+

@@ -1,0 +1,63 @@
+.wrong_credential, #lastname_error, #firstname_error,#username_error , #re-password_error , #email_error , #address_error , #password_error , #form_error
+{
+	color : red;
+	margin-left : 20%;
+	font-weight: bold;
+}
+
+#username_error p , #re-password_error p, #email_error p, #address_error p, #password_error p
+{
+	color : red;
+	
+}
+
+input
+{
+	margin : 0px;
+}
+
+
+/* ------------ Admin error --------------- */
+
+#insert_generic_category_name_error p , #update_generic_category_name_error p , #insert_category_name_error p
+{
+	color : red;
+	margin-left : 31%;
+}
+
+#update_category_name_error p
+{
+	color : red;
+	margin-left : 31%;
+}
+
+#insert_product_desc_error p, #insert_no_of_product_error p, #insert_product_price_error p, #insert_product_name_error p
+{
+	color : red;
+	margin-left : 31%;
+}
+
+#update_product_desc_error p, #update_no_of_product_error p, #update_product_price_error p
+{
+  color : red;
+}
+
+#company_error, #phone_error , #email_error1 , #name_error
+{
+  color : red;
+  margin-left : 20%;
+}
+
+
+
+#company_error p, #phone_error p, #email_error1 p, #name_error p
+{
+  color : red;
+  margin-left : 20%;
+}
+
+.username_present 
+{
+	margin-left: 19%;
+	color: red;
+}

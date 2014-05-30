@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+
+<html>
+  	<head>
+    	<title>Ez Shopping Cart CheckOut Page</title>
+
+
+	    <link rel="stylesheet" href="/stylesheets/style.css" type="text/css" >
+	    <link rel="stylesheet" href="/stylesheets/header.css" type="text/css" >
+	    <link rel="stylesheet" href="/stylesheets/footer.css" type="text/css" >
+	    <link rel="stylesheet" href="/stylesheets/bootstrap.css" type="text/css" >
+	    <link rel="stylesheet" href="/stylesheets/dropdown.css" type="text/css" >
+	    <link rel="stylesheet" href="/stylesheets/error.css" type="text/css" >	    
+	    
+	    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>  	
+  	</head>
+  	
+ 	<div class="wrapper"> 
+  		<body>    
+      		<header>
+        		<div class="header-top">
+          			<div class="container">
+            			<div class="pull-right">
+               				<nav class="navbar clear-right pull-right">
+              					<ul class="nav nav-pills">                <!-- Header NavBar -->                    				   
+              						<li>
+                  						<a href="/UserHomePage" title="home" class="">Home</a>
+                					</li>             
+				                	<li>
+				                  		<a href="/" title="Logout" class="">Log Out</a>
+				                	</li>
+				                				                	
+			              		</ul>
+			            	</nav>
+			        	</div>
+			       	</div>
+      			</div>
+        
+			  	<div class="header-bottom">
+			    	<div class="container">
+				      	<div class="logo">        <!-- Header Logo and Search -->
+				        	<a href="/UserHomePage" title="home" class="pull-left"><img src="/images/logo.jpg" alt="Logo" /></a>
+            				<a href="/UserHomePage" title="home" class="pull-left"><h1 class="clear-left">Cart</h1></a>
+				 		</div>			          			         
+			    	</div>
+				</div>
+			      
+      			<div class="container ">
+          			<nav id="dropdown_nav">
+            			<h3>Bill</h3>
+          			</nav>
+        		</div>
+    		</header>
+
+    		<section class="adjust container">
+        		<form class="container form-horizontal" action="/PaymentDone" method="post">
+          			<table class="table table-striped">          				
+          				<thead>
+            				<tr>
+              					<th>Product Name</th>
+					            <th>Product Count</th>
+					            <th>Price</th>
+					            <th>Amount</th>
+            				</tr>
+          				</thead>
+          				
+          				<tbody>
+          					<% for(var i in userCart) 
+          					{ %>
+          						<tr>
+          						<th><%= userCart[i].product_name %></th>
+          						<th><%= userCart[i].product_count %></th>
+          						<th><%= userCart[i].product_prize %></th>
+          						<th><%= userCart[i].product_prize*userCart[i].product_count  %></th>
+          						</tr>
+          					<% } %>
+                       	</tbody>                       	
+                       	
+                       	<tfoot>
+                         	<td></td>
+                         	<td></td>
+                         	<td class="bold">Total</td>
+                         	<td class="bold total"></td>
+                         </tfoot>
+                         
+                         <% 
+                       		var total=0;
+                       		for(var i in userCart) 
+          					{ 
+          						total = total + userCart[i].product_prize*userCart[i].product_count;
+          						
+          					} 
+          				%>
+      					<script>
+      						jQuery(".total").text(<%= total %>);
+      					</script>
+      					
+    				</table>
+    				
+    				<label class="pull-left bold">Please enter your credit card number</label>
+    				<input type="text" id="creditCard" name="creditCard" class="creditCard">
+           			<button type="submit" id="pay" name="pay" class="btn">Pay</button>
+           			<label class="creditCardNumberError"></label>
+           		</form>
+    		</section>
+    		
+    		<script>
+    			jQuery(document).ready(function()
+				{					
+					jQuery("#pay").click(function(){
+						var creditNumber = jQuery("#creditCard").val();
+						var length = creditNumber.length;
+						if(length!=16)
+						{
+							jQuery(".creditCardNumberError").text("Please enter a valid Credit card number");
+							return false;
+						}
+						else
+						{
+							jQuery(".creditCardNumberError").text("");
+						}
+					});						
+				});
+			</script>
+    		
+			<div class="push">
+			</div>
+		</div>
+
+  		<div class="footer">
+  			<footer>
+    			<div class="container">
+     				<p class="copyright">
+      					Copyright 2012 for
+      					<strong><a href="/UserHomePage" title="home" >EZCart.com</a></strong>
+     				</p>          
+      			</div>
+  			</footer>
+		</div>
+	</body>
+  	
+</html>
+
+
+
